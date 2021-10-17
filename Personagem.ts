@@ -11,8 +11,8 @@ class Personagem{
   ){}
 
 }
-let sansa: Personagem = new Personagem ("Sansa Stark",100, 40, 20, 20)
-let jon: Personagem = new Personagem(" Jon snow ",100, 40, 20, 20)
+let sansa: Personagem = new Personagem ("Sansa Stark",100, 40, 20, 20)//Objeto
+let jon: Personagem = new Personagem(" Jon snow ",100, 40, 20, 20)// Objeto
 
 
 let teclado = prompt();
@@ -38,13 +38,5 @@ sansa.ataque +=2;
          break;
 
 
-
   }
 }
-
-
-
-
-jon.ataque = 50;
-
-console.log("Person", jon);
