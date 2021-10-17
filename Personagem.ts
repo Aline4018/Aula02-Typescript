@@ -1,5 +1,5 @@
 //energia, vida, ataque, defesa, nome
-
+import prompt from "prompt-sync";
 class Personagem{
 
   constructor( // Controi o objeto, usado para diminuir o codigo.
@@ -11,17 +11,40 @@ class Personagem{
   ){}
 
 }
+let sansa: Personagem = new Personagem ("Sansa Stark",100, 40, 20, 20)
+let jon: Personagem = new Personagem(" Jon snow ",100, 40, 20, 20)
+
+
 let teclado = prompt();
-let sansa: Personagem;// Objeto
-sansa = new Personagem("Sansa Stark",100,40,20,20);
-sansa.nome = 'Sansa Stark'
-sansa.ataque = 10;
+let option: number = 0;
 
-console.log("person:>>", sansa);
+while(option != 9){
+  console.log('+========= Personagem =========+');
+  console.log('|1. Treinar ataque             |');
+  console.log('|2. Treinar defesa             |');
+  console.log('|3. Imprimir atributos         |');
+  console.log('|9. Sair                       |');
+  console.log('+==============================+');
+
+  option = +teclado('Escolha uma ação');
+  switch(option) {
+    case 1:
+sansa.ataque +=2;
+         break;
+        case 3:
+           console.log("sansa:>>", sansa)
+   default:
+
+         break;
 
 
-let jon: Personagem = new Personagem(" Jon snow ",100, 40, 20, 20); // Objeto
-jon.nome = " Jon Snow";
+
+  }
+}
+
+
+
+
 jon.ataque = 50;
 
 console.log("Person", jon);
