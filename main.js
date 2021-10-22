@@ -17,24 +17,23 @@ while (option != 9) {
     option = +teclado('Escolha uma ação');
     switch (option) {
         case 1:
-            person.ataque += Math.random() * 7;
-            person.energia -= Math.random() * 10;
+            person.treinarAtacar();
+            person.status();
             break;
         case 2:
-            person.defesa += Math.random() * 5;
-            person.energia -= Math.random() * 10;
+            person.treinarDefesa();
+            person.status();
             break;
         case 3:
-            person.energia += Math.random() * 10;
+            person.descansar();
+            person.status();
             break;
         case 4:
-            person.energia -= Math.random() * 100;
-            if (person.energia < 0) {
-                console.log('Ops! Voce morreu');
-            }
+            person.batalhar();
+            person.status();
             break;
         case 8:
-            console.log("person:>> ", person);
+            person.status();
             break;
         default:
             break;

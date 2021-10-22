@@ -8,7 +8,7 @@ let person: Personagem = new Personagem ("Sansa Stark",100, 40, 20, 20)//Objeto
 let teclado = prompt();
 let option: number = 0;
 
-while(option != 9){
+while(option != 9|| person.isDead()){
   console.log("+========= Personagem =========+");
   console.log("|1. Treinar ataque             |");
   console.log("|2. Treinar defesa             |");
@@ -22,30 +22,30 @@ while(option != 9){
 
   switch(option) {
     case 1:
-         person.ataque += Math.random() * 7;
-         person.energia -= Math.random() * 10;
+         person.treinarAtacar();
+         console.log (person.status());
          break;
     case 2:
-         person.defesa += Math.random() * 5;
-         person.energia -= Math.random() * 10;
+          person.treinarDefesa();
+          console.log (person.status());
          break;
     case 3:
-         person.energia += Math.random() * 10;
+          let horas: number = +teclado("Digite o número de horas: ");
+          person.descansar(horas);
+          console.log (person.status());
          break;
     case 4:
-         person.energia -= Math.random() * 100;
-         if(person.energia<0){
-           console.log('Ops! Voce morreu');
-         }
+         let rest: number = person.batalhar();
+         console.log(`Esta batalha custo ${rest} de energia`)
+         console.log (person.status());
          break;
     case 8:
-         console.log("person:>> ", person)
+         console.log (person.status());
          break;
     default:
          break;
 
 
-
-
   }
 }
+console.log("Ops! Morreu");
