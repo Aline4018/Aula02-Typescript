@@ -1,29 +1,26 @@
 "use strict";
 exports.__esModule = true;
 var Personagem = /** @class */ (function () {
-    function Personagem(// Controi o objeto, usado para diminuir o codigo.
-    nome, // atributos
-    energia, // atributos
-    vida, // atributos
-    ataque, // atributos
-    defesa) {
+    function Personagem(nome, energia, vida, ataque, defesa) {
         this.nome = nome;
         this.energia = energia;
         this.vida = vida;
         this.ataque = ataque;
         this.defesa = defesa;
     }
+    //  TODA VEZ QUE PENSAR EM LER DADOS NA CLASSE - USE PARAMETRO
+    //  TODA VEZ QUE PENSAR EM IMPRIMIR NA CLASSE, USE RETORNO
     Personagem.prototype.status = function () {
-        console.log("Guerreiro: ");
-        console.log("Nome: ", this.nome);
-        console.log("Energia: ", this.energia.toFixed(1));
-        console.log("Ataque: ", this.ataque.toFixed(1));
-        console.log("Defesa: ", this.defesa.toFixed(1));
+        return ("Guerreiro: \n" +
+            "\nNome: " +
+            this.nome +
+            ("\nEnergia: " + this.energia.toFixed(1)) +
+            ("\nAtaque: " + this.ataque.toFixed(1)) +
+            ("\nDefesa: " + this.defesa.toFixed(1)));
     };
     Personagem.prototype.treinarAtacar = function () {
         this.ataque += Math.random() * 7;
         this.energia -= Math.random() * 10;
-        this.isDead();
         if (this.defesa > 100) {
             this.defesa = 0;
         }
@@ -31,25 +28,23 @@ var Personagem = /** @class */ (function () {
     Personagem.prototype.treinarDefesa = function () {
         this.defesa += Math.random() * 5;
         this.energia -= Math.random() * 10;
-        this.isDead();
         if (this.defesa > 100) {
             this.defesa = 0;
         }
     };
-    Personagem.prototype.descansar = function () {
-        this.energia += Math.random() * 10;
+    Personagem.prototype.descansar = function (hour) {
+        this.energia += hour * (Math.random() * 10);
         if (this.energia > 100) {
             this.energia = 100;
         }
     };
     Personagem.prototype.batalhar = function () {
-        this.energia -= Math.random() * 100;
-        this.isDead();
+        var desgaste = Math.random() * 100;
+        this.energia -= desgaste;
+        return desgaste;
     };
     Personagem.prototype.isDead = function () {
-        if (this.energia < 0) {
-            console.log('Ops! Voce morreu');
-        }
+        return this.energia < 0;
     };
     return Personagem;
 }());
